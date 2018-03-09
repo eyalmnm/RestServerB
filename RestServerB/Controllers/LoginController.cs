@@ -31,9 +31,11 @@ namespace RestServerB.Controllers
             String pass = value.getPassword();
             String uuid = loginPersistance.Login(name, pass);
 
-            if ((null == uuid) && (0 == uuid.Length))
+            if ((null == uuid) || (0 == uuid.Length))
             {
-                return Ok($"user not found {name}");
+                Dictionary<String, object> response = new Dictionary<String, object>();
+                response.Add("error", $"user not found {name}");
+                return Ok(JsonUtils.toJsonStr(response));
             }
             else
             {

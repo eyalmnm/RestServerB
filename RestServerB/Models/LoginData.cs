@@ -7,11 +7,12 @@ namespace RestServerB.Models
 {
     public class LoginData
     {
-        private String Name { get; }
-        private String Password { get; }
+        private String Name { set; get; }
+        private String Password { set; get; }
 
         public LoginData(String name, String password)
         {
+            Console.WriteLine($"enter with {name}");
             this.Name = name;
             this.Password = password;
         }

@@ -7,10 +7,10 @@ namespace RestServerB.Utils
 {
     public class JsonUtils
     {
-        public static string toJsonStr(Dictionary<string, object> data)
+        public static String toJsonStr(Dictionary<String, object> data)
         {
-            string str = "{";
-            foreach(KeyValuePair<string, object> item in data)
+            String str = "{";
+            foreach(KeyValuePair<String, object> item in data)
             {
                 str += addString(item.Key) + ":" + addValue(item.Value) + ",";
             }
@@ -22,20 +22,20 @@ namespace RestServerB.Utils
             return str;
         }
 
-        private static string addValue(object value)
+        private static String addValue(object value)
         {
-            if (value is string)
+            if (value is String)
             {
-                return addString((string) value);
+                return addString((String) value);
             } else
             {
                 return value.ToString();
             }
         }
 
-        private static string addString(string str)
+        private static String addString(String str)
         {
-            return "\"" + str + "\"";
+            return str;
         }
     }
 }
