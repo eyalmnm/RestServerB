@@ -8,101 +8,101 @@ namespace RestServerB.Models
     // Relacting an item in XXXX table
     public class Files
     {
-        public long FilesId { get; }
-        public string FileNumber { get; }
-        public long ReportType { get; }
-        public long ReportTypeSub { get; }
-        public string ReportTypeMoreInfo { get; }
-        public long ClerkId { get; }
-        public long MainApprasierId { get; }
-        public DateTime OrderDate { get; }
-        public string IssueNumber { get; }
-        public long OrderSource { get; }
-        public long OrderName { get; }
-        public string PolicyNumber { get; }
-        public string CallNumber { get; }
-        public long ContactId { get; }
-        public long ThirdPartyId { get; }
-        public long InsuredId { get; }
-        public string ContactName { get; }
-        public string ContactMobile { get; }
-        public string SuitNumber { get; }
-        public long AgentId { get; }
-        public long AgentClerkId { get; }
-        public string EventAddress { get; }
-        public long EventCity { get; }
-        public DateTime EventDate { get; }
-        public DateTime EventDateTo { get; }
-        public DateTime CheckDate { get; }
-        public DateTime RecieveDocDate { get; }
-        public DateTime SendReportDate { get; }
-        public long FileStatus { get; }
-        public long FileShape { get; }
-        public long FileStorageType { get; }
-        public string FileStorageInfo { get; }
-        public long Debt { get; }
-        public DateTime CreationDate { get; }
-        public DateTime CloseDate { get; }
-        public DateTime LastPaymentUpdate { get; }
-        public bool LegalFile { get; }
-        public long NumberOfFiles { get; }
-        public string ContactPhoneWork { get; }
-        public string ContactPhoneHome { get; }
-        public string ContactEmail { get; }
-        public long StructureSum { get; }
-        public long ContentSum { get; }
-        public long SelfParticipationSum { get; }
-        public DateTime InsPeriodFrom { get; }
-        public DateTime InsPeriodTo { get; }
-        public long PolicyType { get; }
-        public long PolicyName { get; }
-        public string SeaCargo { get; }
-        public string SeaMovilAviri { get; }
-        public string SeaShip { get; }
-        public DateTime SeaIsraelArrivalDate { get; }
-        public long SeaArrivalPort { get; }
-        public string SeaContainer { get; }
-        public string SeaMezhar { get; }
-        public string SeaCargoBillNum { get; }
-        public string SeaInsideCargoBillNum { get; }
-        public DateTime SeaFinalDestArrivalDate { get; }
-        public string SeaDamage { get; }
-        public string SeaAriza { get; }
-        public string SeaTosefet { get; }
-        public double SeaBillValue { get; }
-        public long SeaBillCoin { get; }
-        public double SeaInsSum { get; }
-        public long SeaCustomsAgent { get; }
-        public long Coin { get; }
-        public DateTime UpdateDate { get; }
-        public string FileRemark { get; }
-        public long CreateReminders { get; }
-        public long Contact2Id { get; }
-        public long Contact3Id { get; }
-        public double ElectronicSum { get; }
-        public double SheverMechaniSum { get; }
-        public double HarchavotSum { get; }
-        public DateTime SendFirstMessageDate { get; }
-        public long PolicyTosefetNum { get; }
-        public DateTime PolicyUpdateDate { get; }
-        public long ApartmentType { get; }
-        public long CodeMadorType { get; }
-        public string SuitNumberSub { get; }
-        public double EstimatedDamageValue { get; }
-        public DateTime SendTosefetDate { get; }
-        public long PersonAdd1 { get; }
-        public long PersonAdd2 { get; }
-        public string BetMishpatNum { get; }
-        public double TachshitimSum { get; }
-        public DateTime SendBillDate { get; }
-        public long Insured2Id { get; }
-        public long Insured3Id { get; }
-        public double EstimatedDamageStructure { get; }
-        public double EstimatedDamageContent { get; }
-        public double EstimatedDamageTahshitim { get; }
-        public double EstimatedDamageMlay { get; }
-        public double EstimatedDamageUvdanRevahim { get; }
-        public double EstimatedDamageOther { get; }
+        public long FilesId { set; get; }
+        public string FileNumber { set; get; }
+        public long ReportType { set; get; }
+        public long ReportTypeSub { set; get; }
+        public string ReportTypeMoreInfo { set; get; }
+        public long ClerkId { set; get; }
+        public long MainApprasierId { set; get; }
+        public DateTime OrderDate { set; get; }
+        public string IssueNumber { set; get; }
+        public long OrderSource { set; get; }
+        public long OrderName { set; get; }
+        public string PolicyNumber { set; get; }
+        public string CallNumber { set; get; }
+        public long ContactId { set; get; }
+        public long ThirdPartyId { set; get; }
+        public long InsuredId { set; get; }
+        public string ContactName { set; get; }
+        public string ContactMobile { set; get; }
+        public string SuitNumber { set; get; }
+        public long AgentId { set; get; }
+        public long AgentClerkId { set; get; }
+        public string EventAddress { set; get; }
+        public long EventCity { set; get; }
+        public DateTime EventDate { set; get; }
+        public DateTime EventDateTo { set; get; }
+        public DateTime CheckDate { set; get; }
+        public DateTime RecieveDocDate { set; get; }
+        public DateTime SendReportDate { set; get; }
+        public long FileStatus { set; get; }
+        public long FileShape { set; get; }
+        public long FileStorageType { set; get; }
+        public string FileStorageInfo { set; get; }
+        public long Debt { set; get; }
+        public DateTime CreationDate { set; get; }
+        public DateTime CloseDate { set; get; }
+        public DateTime LastPaymentUpdate { set; get; }
+        public bool LegalFile { set; get; }
+        public long NumberOfFiles { set; get; }
+        public string ContactPhoneWork { set; get; }
+        public string ContactPhoneHome { set; get; }
+        public string ContactEmail { set; get; }
+        public long StructureSum { set; get; }
+        public long ContentSum { set; get; }
+        public long SelfParticipationSum { set; get; }
+        public DateTime InsPeriodFrom { set; get; }
+        public DateTime InsPeriodTo { set; get; }
+        public long PolicyType { set; get; }
+        public long PolicyName { set; get; }
+        public string SeaCargo { set; get; }
+        public string SeaMovilAviri { set; get; }
+        public string SeaShip { set; get; }
+        public DateTime SeaIsraelArrivalDate { set; get; }
+        public long SeaArrivalPort { set; get; }
+        public string SeaContainer { set; get; }
+        public string SeaMezhar { set; get; }
+        public string SeaCargoBillNum { set; get; }
+        public string SeaInsideCargoBillNum { set; get; }
+        public DateTime SeaFinalDestArrivalDate { set; get; }
+        public string SeaDamage { set; get; }
+        public string SeaAriza { set; get; }
+        public string SeaTosefet { set; get; }
+        public double SeaBillValue { set; get; }
+        public long SeaBillCoin { set; get; }
+        public double SeaInsSum { set; get; }
+        public long SeaCustomsAgent { set; get; }
+        public long Coin { set; get; }
+        public DateTime UpdateDate { set; get; }
+        public string FileRemark { set; get; }
+        public long CreateReminders { set; get; }
+        public long Contact2Id { set; get; }
+        public long Contact3Id { set; get; }
+        public double ElectronicSum { set; get; }
+        public double SheverMechaniSum { set; get; }
+        public double HarchavotSum { set; get; }
+        public DateTime SendFirstMessageDate { set; get; }
+        public long PolicyTosefetNum { set; get; }
+        public DateTime PolicyUpdateDate { set; get; }
+        public long ApartmentType { set; get; }
+        public long CodeMadorType { set; get; }
+        public string SuitNumberSub { set; get; }
+        public double EstimatedDamageValue { set; get; }
+        public DateTime SendTosefetDate { set; get; }
+        public long PersonAdd1 { set; get; }
+        public long PersonAdd2 { set; get; }
+        public string BetMishpatNum { set; get; }
+        public double TachshitimSum { set; get; }
+        public DateTime SendBillDate { set; get; }
+        public long Insured2Id { set; get; }
+        public long Insured3Id { set; get; }
+        public double EstimatedDamageStructure { set; get; }
+        public double EstimatedDamageContent { set; get; }
+        public double EstimatedDamageTahshitim { set; get; }
+        public double EstimatedDamageMlay { set; get; }
+        public double EstimatedDamageUvdanRevahim { set; get; }
+        public double EstimatedDamageOther { set; get; }
 
         public Files(long fileId, string fileNumber, long reportType, long reportTypeSub, string reportTypeMoreInfo,
             long clerkId, long mainApprasierId, DateTime orderDate, string issueNumber, long orderSource, long orderName,

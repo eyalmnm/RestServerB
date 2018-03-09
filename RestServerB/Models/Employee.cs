@@ -8,35 +8,35 @@ namespace RestServerB.Models
     // Relacting an item in EmployeeList table
     public class Employee
     {
-        public long EmployeeListId { get; }
-        public long DisplayId { get; }
-        public string Name { get; }
-        public bool Active { get; }
-        public int Job { get; }
-        public string CodeName { get; }
-        public string Password { get; }
-        public int SecurityLevel { get; }
-        public string LastOpenedFile { get; }
-        public bool ReminderActive { get; }
-        public string Address { get; }
-        public int City { get; }
-        public int Zip { get; }
-        public string Email { get; }
-        public string PhoneHome { get; }
-        public string Mobile { get; }
-        public string Fax { get; }
-        public string PhoneAdditional { get; }
-        public string Degree { get; }
-        public string Education { get; }
-        public string JobDescription { get; }
-        public DateTime DisableBlockUntil { get; }
-        public int EmpFilePrecentage { get; }
-        public string EmpNicName { get; }
-        public int EmployeeManager { get; }
-        public int HideReminders { get; }
-        public string EmpIdNum { get; }
-        public int DispalyInOpenByList { get; }
-        public int CurrentOpenedFileId { get; }
+        public long EmployeeListId { set; get; }
+        public long DisplayId { set; get; }
+        public string Name { set; get; }
+        public bool Active { set; get; }
+        public int Job { set; get; }
+        public string CodeName { set; get; }
+        public string Password { set; get; }
+        public int SecurityLevel { set; get; }
+        public string LastOpenedFile { set; get; }
+        public bool ReminderActive { set; get; }
+        public string Address { set; get; }
+        public int City { set; get; }
+        public int Zip { set; get; }
+        public string Email { set; get; }
+        public string PhoneHome { set; get; }
+        public string Mobile { set; get; }
+        public string Fax { set; get; }
+        public string PhoneAdditional { set; get; }
+        public string Degree { set; get; }
+        public string Education { set; get; }
+        public string JobDescription { set; get; }
+        public DateTime DisableBlockUntil { set; get; }
+        public int EmpFilePrecentage { set; get; }
+        public string EmpNicName { set; get; }
+        public int EmployeeManager { set; get; }
+        public int HideReminders { set; get; }
+        public string EmpIdNum { set; get; }
+        public int DispalyInOpenByList { set; get; }
+        public int CurrentOpenedFileId { set; get; }
 
         public Employee (long employeeListId, long displayId, string name, bool active, int job, 
             string codeName, string password, int securityLevel, string lastOpenedFile, 
