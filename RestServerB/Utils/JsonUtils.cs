@@ -9,33 +9,28 @@ namespace RestServerB.Utils
     {
         public static String toJsonStr(Dictionary<String, object> data)
         {
-            String str = "{";
-            foreach(KeyValuePair<String, object> item in data)
+            String jsonString = "{";
+            foreach (KeyValuePair<String, object> item in data)
             {
-                str += addString(item.Key) + ":" + addValue(item.Value) + ",";
+                jsonString += '\"' + item.Key + '\"';
+                jsonString += ':';
+                if (item.Value is string)
+                {
+                    jsonString += '\"' + ((string)item.Value) + '\"';
+                }
+                else
+                {
+                    jsonString += ((string)item.Value.ToString());
+                }
+                jsonString += ',';
             }
-            if (str.Length < 1)
+            if (1 < jsonString.Length)
             {
-                str = str.Remove(str.Length - 1);
+                jsonString = jsonString.Remove(jsonString.Length - 1);
             }
-            str += "}";
-            return str;
-        }
-
-        private static String addValue(object value)
-        {
-            if (value is String)
-            {
-                return addString((String) value);
-            } else
-            {
-                return value.ToString();
-            }
-        }
-
-        private static String addString(String str)
-        {
-            return str;
+            jsonString += "}";
+            Console.WriteLine("Json: " + jsonString);
+            return jsonString;
         }
     }
 }
