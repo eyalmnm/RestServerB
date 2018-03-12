@@ -1,47 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using RestServerB.dbVirtulization;
+using System.Collections.Generic;
 using System.Data;
 using RestServerB.Managers;
 
-
 namespace RestServerB.Data_Manager
 {
-    public class LoginPersistance
+    public class FindFilesPersistance
     {
         public static String password = "Tapuach27072004";
         public static String connectionString = "Provider = Microsoft.Jet.OLEDB.4.0;OLE DB Services=-1;" +
             " Data Source=" + "C:\\projects\\MyDirs\\Omdan\\DB\\Omdan.mdb;" + "Persist Security Info=False" + ";" +
             "Jet OLEDB:Database Password=" + password;
-        
-        private DBVirtualizationOleDB dBVirtualizationOleDB;
 
-        public String Login(String name, String password)
+        private DBVirtualizationOleDB dBVirtualizationOleDB;
+        private String tempTblName = "Records";
+
+        public List<System.Collections.Generic.KeyValuePair<String, String>> FindFile(String fileNumber)
         {
             DataTable dt;
-            String codeName;
+            String retFileNumber;
 
             Initializer();
 
-            using (CommandVirtualization command = new CommandVirtualization(SqlDepot.LoginUser()))
+            using (CommandVirtualization command = new CommandVirtualization(SqlDepot.FindRecord()))
             {
-                command.Parameters.Add("CodeName", name, null);
-                command.Parameters.Add("Password", password, null);
+                command.Parameters.Add("FileNumber", fileNumber, null);
 
                 try
                 {
-                    dBVirtualizationOleDB.Execute(command, "User");
-                    dt = dBVirtualizationOleDB.Import("User");
+                    dBVirtualizationOleDB.Execute(command, tempTblName);
+                    dt = dBVirtualizationOleDB.Import(tempTblName);
+
                     if (0 >= dt.Rows.Count)
                     {
-                        Console.WriteLine("User Not Found");
+                        Console.WriteLine("Record Not Found");
                         return null;
                     }
-                    codeName = dt.Rows[0]["CodeName"].ToString();
-                    if ((null != codeName) && (0 < codeName.Trim().Length))
+                    retFileNumber = dt.Rows[0]["FileNumber"].ToString();
+                    if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
                     {
-                        return ConnectionsManager.addConnection(password);
+                        for(int i = 0; i < dt.Rows.Count; i ++)
+                        {
+                            gdggdfgdf
+                        }
+                        return ;
                     }
                     return null;
                 }
@@ -63,12 +66,7 @@ namespace RestServerB.Data_Manager
             dBVirtualizationOleDB.SetConnection(connectionString);
         }
 
-        public bool Logout(String uuid, String password)
-        {
-            return ConnectionsManager.Remove(uuid, password);
-        }
-
-        ~LoginPersistance()
+        ~FindFilesPersistance()
         {
             if (null != dBVirtualizationOleDB)
             {

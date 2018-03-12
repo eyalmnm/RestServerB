@@ -13,9 +13,10 @@ namespace RestServerB.dbVirtulization
             return "SELECT * FROM EmployeeList WHERE CodeName=@CodeName AND Password=@Password And Active=TRUE";
         }
 
-        public static List<KeyValuePair<string, string>> FindRecord()
+        public static /*List<KeyValuePair<string, string>>*/ String FindRecord()
         {
-            return new List<KeyValuePair<string, string>>(); // TODO
+            return "SELECT * FROM Files WHERE FileNumber=@FileNumber";
+            // return new List<KeyValuePair<string, string>>(); // TODO
         }
 
         public static void SaveRecord(List<KeyValuePair<string, string>> recData)

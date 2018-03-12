@@ -322,6 +322,7 @@
     <Compile Include="dbVirtulization\SqlDepot.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Files.cs" />
+    <Compile Include="Models\FindFilesData.cs" />
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\JsonUtils.cs" />
