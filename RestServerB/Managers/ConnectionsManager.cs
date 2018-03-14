@@ -21,6 +21,11 @@ namespace RestServerB.Managers
             return uuid;
         }
 
+        public static bool IsExist(String uuid)
+        {
+            return connections.ContainsKey(uuid);
+        }
+
         public static bool Remove(string uuid, string password)
         {
             connections.Remove(uuid);

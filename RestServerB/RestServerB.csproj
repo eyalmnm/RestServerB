@@ -307,9 +307,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DummiController.cs" />
+    <Compile Include="Controllers\FindFileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Data_Manager\EmployeePresistance.cs" />
+    <Compile Include="Data_Manager\FindFilesPersistance.cs" />
     <Compile Include="Data_Manager\LoginPersistance.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

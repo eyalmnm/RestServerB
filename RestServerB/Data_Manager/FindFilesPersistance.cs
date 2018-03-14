@@ -16,7 +16,7 @@ namespace RestServerB.Data_Manager
         private DBVirtualizationOleDB dBVirtualizationOleDB;
         private String tempTblName = "Records";
 
-        public List<System.Collections.Generic.KeyValuePair<String, String>> FindFile(String fileNumber)
+        public Dictionary<String, object> FindFile(String fileNumber)
         {
             DataTable dt;
             String retFileNumber;
@@ -40,11 +40,15 @@ namespace RestServerB.Data_Manager
                     retFileNumber = dt.Rows[0]["FileNumber"].ToString();
                     if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
                     {
-                        for(int i = 0; i < dt.Rows.Count; i ++)
-                        {
-                            gdggdfgdf
-                        }
-                        return ;
+                        Dictionary<String, object> rowValues = new Dictionary<String, object>();
+                        rowValues.Add("Files.FileNumber", dt.Rows[0]["Files.FileNumber"].ToString());
+                        rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
+                        rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
+                        rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
+                        rowValues.Add("Files.SuitNumber", dt.Rows[0]["Files.SuitNumber"].ToString());
+                        rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
+                        rowValues.Add("Files.CreationDate", dt.Rows[0]["Files.CreationDate"].ToString());
+                        return rowValues;
                     }
                     return null;
                 }

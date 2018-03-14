@@ -13,10 +13,14 @@ namespace RestServerB.dbVirtulization
             return "SELECT * FROM EmployeeList WHERE CodeName=@CodeName AND Password=@Password And Active=TRUE";
         }
 
-        public static /*List<KeyValuePair<string, string>>*/ String FindRecord()
+
+        public static String FindRecord()
         {
-            return "SELECT * FROM Files WHERE FileNumber=@FileNumber";
-            // return new List<KeyValuePair<string, string>>(); // TODO
+            return "SELECT Files.FileNumber, InsuredList.Name, Customers.Name, EmployeeList.Name, Files.SuitNumber, FileStatus.Name, Files.CreationDate" + 
+                "FROM((((Files LEFT JOIN FileCustomerLink ON Files.FilesId = FileCustomerLink.FileId) LEFT JOIN Customers ON FileCustomerLink.CustomerId = Customers.CustomersId) " +
+                "LEFT JOIN InsuredList ON Files.InsuredId = InsuredList.InsuredListId) LEFT JOIN EmployeeList ON Files.MainApprasierId = EmployeeList.EmployeeListId) " +
+                "LEFT JOIN FileStatus ON Files.FileStatus = FileStatus.FileStatusId" +
+                "WHERE Files.FileNumber = @FileNumber";
         }
 
         public static void SaveRecord(List<KeyValuePair<string, string>> recData)

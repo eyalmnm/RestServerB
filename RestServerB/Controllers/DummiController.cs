@@ -12,7 +12,9 @@ namespace RestServerB.Controllers
         // GET: api/Dummi
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2", "value3" };
+            IEnumerable<string> headerValues = Request.Headers.GetValues("uuid");
+            String uuid = headerValues.FirstOrDefault();
+            return new string[] { "value1", "value2", "uuid: " + uuid };
         }
 
         // GET: api/Dummi/5
