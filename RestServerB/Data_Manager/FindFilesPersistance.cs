@@ -40,14 +40,14 @@ namespace RestServerB.Data_Manager
                     retFileNumber = dt.Rows[0]["FileNumber"].ToString();
                     if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
                     {
-                        Dictionary<String, object> rowValues = new Dictionary<String, object>();
-                        rowValues.Add("Files.FileNumber", dt.Rows[0]["Files.FileNumber"].ToString());
-                        rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
-                        rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
-                        rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
-                        rowValues.Add("Files.SuitNumber", dt.Rows[0]["Files.SuitNumber"].ToString());
-                        rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
-                        rowValues.Add("Files.CreationDate", dt.Rows[0]["Files.CreationDate"].ToString());
+                        Dictionary<String, object> rowValues = new Dictionary<String, object>();                      
+                        if (DBNull.Value != dt.Rows[0]["FileNumber"]) rowValues.Add("Files.FileNumber", dt.Rows[0]["FileNumber"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["InsuredList.Name"]) rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["Customers.Name"]) rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["EmployeeList.Name"]) rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["SuitNumber"]) rowValues.Add("Files.SuitNumber", dt.Rows[0]["SuitNumber"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["FileStatus.Name"]) rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[0]["CreationDate"]) rowValues.Add("Files.CreationDate", dt.Rows[0]["CreationDate"].ToString());  // DBNull.Value
                         return rowValues;
                     }
                     return null;

@@ -16,8 +16,15 @@ namespace RestServerB.Controllers
         // POST: api/FindFile
         public IHttpActionResult Post(FindFilesData value)
         {
-            IEnumerable<string> headerValues = Request.Headers.GetValues("uuid");
-            String uuid = headerValues.FirstOrDefault();
+            String uuid = "";
+
+            IEnumerable<string> headerValues;
+            var nameFilter = string.Empty;
+            if (Request.Headers.TryGetValues("uuid", out headerValues))
+            {
+                nameFilter = headerValues.FirstOrDefault();
+                uuid = nameFilter;
+            }
 
             if (false == ConnectionsManager.IsExist(uuid))
             {
