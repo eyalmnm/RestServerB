@@ -32,5 +32,22 @@ namespace RestServerB.Utils
             Console.WriteLine("Json: " + jsonString);
             return jsonString;
         }
+
+        public static String toJsonStr(List<Dictionary<String, object>> dataList)
+        {
+            if (null == dataList) return null;
+            String jsonStr = "[";
+            foreach (Dictionary<String, object> item in dataList)
+            {
+                jsonStr += toJsonStr(item);
+                jsonStr += ",";
+            }
+            if (1 < jsonStr.Length)
+            {
+                jsonStr = jsonStr.Remove(jsonStr.Length - 1);
+            }
+            jsonStr += "]";
+            return jsonStr;
+        }
     }
 }
