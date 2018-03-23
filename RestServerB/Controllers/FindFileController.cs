@@ -35,9 +35,9 @@ namespace RestServerB.Controllers
             FindFilesPersistance findFilesPersistance = new FindFilesPersistance();
 
             String fileNumber = value.getFileNumber();
-            Dictionary<String, object> fileData = findFilesPersistance.FindFile(fileNumber);
+            List<Dictionary<String, object>> dataList = findFilesPersistance.FindFile(fileNumber);
 
-            return Ok(JsonUtils.toJsonStr(fileData));
+            return Ok(JsonUtils.toJsonStr(dataList));
         }
     }
 }

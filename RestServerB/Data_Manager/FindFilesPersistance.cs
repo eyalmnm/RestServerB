@@ -16,7 +16,7 @@ namespace RestServerB.Data_Manager
         private DBVirtualizationOleDB dBVirtualizationOleDB;
         private String tempTblName = "Records";
 
-        public Dictionary<String, object> FindFile(String fileNumber)
+        public List<Dictionary<String, object>> FindFile(String fileNumber)
         {
             DataTable dt;
             String retFileNumber;
@@ -37,20 +37,28 @@ namespace RestServerB.Data_Manager
                         Console.WriteLine("Record Not Found");
                         return null;
                     }
-                    retFileNumber = dt.Rows[0]["FileNumber"].ToString();
-                    if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
+                    List<Dictionary<String, object>> resultsList = new List<Dictionary<String, object>>();
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        Dictionary<String, object> rowValues = new Dictionary<String, object>();                      
-                        if (DBNull.Value != dt.Rows[0]["FileNumber"]) rowValues.Add("Files.FileNumber", dt.Rows[0]["FileNumber"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["InsuredList.Name"]) rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["Customers.Name"]) rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["EmployeeList.Name"]) rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["SuitNumber"]) rowValues.Add("Files.SuitNumber", dt.Rows[0]["SuitNumber"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["FileStatus.Name"]) rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
-                        if (DBNull.Value != dt.Rows[0]["CreationDate"]) rowValues.Add("Files.CreationDate", dt.Rows[0]["CreationDate"].ToString());  // DBNull.Value
-                        return rowValues;
+                        retFileNumber = dt.Rows[0]["FileNumber"].ToString();
+                        if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
+                        {
+                            Dictionary<String, object> rowValues = new Dictionary<String, object>();
+                            if (DBNull.Value != dt.Rows[0]["FileNumber"]) rowValues.Add("FileNumber", dt.Rows[0]["FileNumber"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["InsuredList.Name"]) rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["Customers.Name"]) rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["EmployeeList.Name"]) rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["SuitNumber"]) rowValues.Add("SuitNumber", dt.Rows[0]["SuitNumber"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["FileStatus.Name"]) rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
+                            if (DBNull.Value != dt.Rows[0]["CreationDate"]) rowValues.Add("CreationDate", dt.Rows[0]["CreationDate"].ToString());  // DBNull.Value
+                            resultsList.Add(rowValues);
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
-                    return null;
+                    return resultsList;
                 }
                 catch (Exception ex)
                 {
