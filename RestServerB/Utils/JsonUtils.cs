@@ -16,7 +16,12 @@ namespace RestServerB.Utils
                 jsonString += ':';
                 if (item.Value is string)
                 {
-                    jsonString += '\"' + ((string)item.Value) + '\"';
+                    String value = (string)item.Value;
+                    if (value.Contains("\""))
+                    {
+                        value = value.Replace('\"', '\'');
+                    }
+                    jsonString += '\"' + value + '\"';
                 }
                 else
                 {

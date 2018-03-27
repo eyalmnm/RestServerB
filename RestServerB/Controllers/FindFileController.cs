@@ -8,6 +8,7 @@ using RestServerB.Models;
 using RestServerB.Data_Manager;
 using RestServerB.Managers;
 using RestServerB.Utils;
+using RestServerB.MyConfig;
 
 namespace RestServerB.Controllers
 {
@@ -29,13 +30,20 @@ namespace RestServerB.Controllers
             if (false == ConnectionsManager.IsExist(uuid))
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("error", "user not found");
+                response.Add("error", ErrorsCode.USER_NOT_LOGGED_IN);
                 return Ok(JsonUtils.toJsonStr(response));
             }
             FindFilesPersistance findFilesPersistance = new FindFilesPersistance();
 
             String fileNumber = value.getFileNumber();
+            Console.WriteLine($"Sercing for file: {fileNumber}");
             List<Dictionary<String, object>> dataList = findFilesPersistance.FindFile(fileNumber);
+            if (null == dataList)
+            {
+                Dictionary<String, object> response = new Dictionary<String, object>();
+                response.Add("error", ErrorsCode.FILE_NOT_FOUND);
+                return Ok(JsonUtils.toJsonStr(response));
+            }
 
             return Ok(JsonUtils.toJsonStr(dataList));
         }

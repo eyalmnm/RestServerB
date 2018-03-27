@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Collections;
 using System.Collections.Generic;
 using RestServerB.Utils;
+using RestServerB.MyConfig;
 
 namespace RestServerB.Controllers
 {
@@ -34,7 +35,7 @@ namespace RestServerB.Controllers
             if ((null == uuid) || (0 == uuid.Length))
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("error", $"user not found {name}");
+                response.Add("error", ErrorsCode.USER_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             }
             else
