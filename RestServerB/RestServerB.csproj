@@ -329,6 +329,8 @@
     <Compile Include="MyConfig\ErrorsCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DictionaryUtils.cs" />
+    <Compile Include="Utils\FileUtils.cs" />
+    <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\JsonUtils.cs" />
     <Compile Include="Utils\StringUtils.cs" />
   </ItemGroup>
@@ -351,6 +353,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="pictures\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
