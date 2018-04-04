@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using RestServerB.dbVirtulization;
 using System.Data;
 using RestServerB.Managers;
+using RestServerB.MyConfig;
 
 
 namespace RestServerB.Data_Manager
@@ -12,7 +11,7 @@ namespace RestServerB.Data_Manager
     {
         public static String password = "Tapuach27072004";
         public static String connectionString = "Provider = Microsoft.Jet.OLEDB.4.0;OLE DB Services=-1;" +
-            " Data Source=" + "C:\\projects\\MyDirs\\Omdan\\DB\\Omdan.mdb;" + "Persist Security Info=False" + ";" +
+            " Data Source=" + CsConstatnts.ACCESS_DB_BASE_PATH + "Omdan.mdb;" + "Persist Security Info=False" + ";" +
             "Jet OLEDB:Database Password=" + password;
         
         private DBVirtualizationOleDB dBVirtualizationOleDB;

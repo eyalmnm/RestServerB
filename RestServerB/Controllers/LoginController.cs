@@ -35,14 +35,14 @@ namespace RestServerB.Controllers
             if ((null == uuid) || (0 == uuid.Length))
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("error", ErrorsCode.USER_NOT_FOUND);
+                response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             }
             else
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("name", name);
-                response.Add("uuid", uuid);
+                response.Add(CsConstatnts.userName, name);
+                response.Add(CsConstatnts.uuid, uuid);
 
                 return Ok(JsonUtils.toJsonStr(response));
             }
@@ -57,12 +57,14 @@ namespace RestServerB.Controllers
             String uuid = loginPersistance.Login(usr, pass);
             if ((null == uuid) && (0 == uuid.Length))
             {
-                return Ok($"user not found {name}");
+                Dictionary<String, object> response = new Dictionary<String, object>();
+                response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_FOUND);
+                return Ok(JsonUtils.toJsonStr(response));
             } else
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("name", name);
-                response.Add("uuid", uuid);
+                response.Add(CsConstatnts.userName, name);
+                response.Add(CsConstatnts.uuid, uuid);
 
                 return Ok(JsonUtils.toJsonStr(response));
             }

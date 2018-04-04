@@ -21,7 +21,7 @@ namespace RestServerB.Controllers
 
             IEnumerable<string> headerValues;
             var nameFilter = string.Empty;
-            if (Request.Headers.TryGetValues("uuid", out headerValues))
+            if (Request.Headers.TryGetValues(CsConstatnts.uuid, out headerValues))
             {
                 nameFilter = headerValues.FirstOrDefault();
                 uuid = nameFilter;
@@ -30,7 +30,7 @@ namespace RestServerB.Controllers
             if (false == ConnectionsManager.IsExist(uuid))
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("error", ErrorsCode.USER_NOT_LOGGED_IN);
+                response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_LOGGED_IN);
                 return Ok(JsonUtils.toJsonStr(response));
             }
             FindFilesPersistance findFilesPersistance = new FindFilesPersistance();
@@ -41,7 +41,7 @@ namespace RestServerB.Controllers
             if (null == dataList)
             {
                 Dictionary<String, object> response = new Dictionary<String, object>();
-                response.Add("error", ErrorsCode.FILE_NOT_FOUND);
+                response.Add(CsConstatnts.error, ErrorsCode.FILE_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             }
 

@@ -35,8 +35,7 @@ namespace RestServerB.Utils
             } else
             {
                 return null;
-            }
-            
+            }      
         }
     }
 }
