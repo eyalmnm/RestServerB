@@ -23,11 +23,15 @@ namespace RestServerB.MyConfig
         public const String fileNumber = "fileNumber";
 
         public const String uploadImage = "api/ImageUpload";
-        public const String directory = "filePath";
+        public const String filePath = "filePath";
         //public static final String subDirectory = "sub_directory";
         public const String image = "fileContent";
         public const String fileName = "fileName";
         public const String fileFullPath = "file_full_path";
 
+        // Get File list from Directory
+        public const String getFilesList = "api/GetFiles";
+        public const String directory = "directory";
+        public const String filesList = "files_list";
     }
 }

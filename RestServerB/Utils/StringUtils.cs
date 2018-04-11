@@ -17,5 +17,24 @@ namespace RestServerB.Utils
             if (0 == stri.Length) return true;
             return false;
         }
+
+        public static String StringArray2String(String[] theArray)
+        {
+            return StringArray2String(theArray, ",");
+        }
+
+        public static String StringArray2String(String[] theArray, String delimeter)
+        {
+            String retString = "";
+            for(int i = 0; i < theArray.Length; i ++)
+            {
+                retString += theArray[i];
+                if (theArray.Length - 1 > i)
+                {
+                    retString += delimeter;
+                }
+            }
+            return retString;
+        }
     }
 }

@@ -34,8 +34,7 @@ namespace RestServerB.Data_Manager
                 || (true ==StringUtils.IsNullOrEmpty(this.FileContent))) {
                 throw new Exception(ErrorsCode.TARGET_FILE_MISSING_DATA.ToString());
             }
-            // Image path
-            String testPath = HttpContext.Current.Server.MapPath("../Pictures");
+            // Image path           
             String basePath = CsConstatnts.IMAGES_BASE_PATH; // HttpContext.Current.Server.MapPath("/../../Pictures");
             if (true == StringUtils.IsNullOrEmpty(basePath))
             {
@@ -43,10 +42,10 @@ namespace RestServerB.Data_Manager
             }
             String path = Path.Combine(basePath, Directory);           
 
-            //Check if directory exist
+            //Check if filePath exist
             if (false == System.IO.Directory.Exists(path))
             {
-                System.IO.Directory.CreateDirectory(path); //Create directory if it doesn't exist
+                System.IO.Directory.CreateDirectory(path); //Create filePath if it doesn't exist
             }
           
             String imagePath = Path.Combine(path, this.FileName);
