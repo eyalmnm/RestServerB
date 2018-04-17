@@ -45,7 +45,9 @@ namespace RestServerB.Controllers
                 return Ok(JsonUtils.toJsonStr(response));
             } else
             {
-                response.Add(CsConstatnts.filesList, StringUtils.StringArray2String(filesList))
+                response.Add(CsConstatnts.directory, directory);
+                response.Add(CsConstatnts.filesList, StringUtils.StringArray2String(filesList));
+                return Ok(JsonUtils.toJsonStr(response));
             }
         }        
     }
