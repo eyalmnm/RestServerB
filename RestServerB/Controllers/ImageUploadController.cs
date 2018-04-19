@@ -50,7 +50,8 @@ namespace RestServerB.Controllers
                     response.Add(CsConstatnts.error, ErrorsCode.TARGET_FILE_FAILED_TO_RESTORED);
                 } else
                 {
-                    response.Add(CsConstatnts.fileFullPath, path);
+                    response.Add(CsConstatnts.directory, directory);
+                    response.Add(CsConstatnts.fileName, fileName);
                 }
             } catch (Exception e)
             {
