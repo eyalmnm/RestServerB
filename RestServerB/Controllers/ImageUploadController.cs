@@ -16,6 +16,7 @@ namespace RestServerB.Controllers
     {
         public IHttpActionResult Post(UploadedFile value)
         {
+            Console.WriteLine("ImageUploadController");
             Dictionary<String, object> response = new Dictionary<String, object>();
 
             string directory = value.getFilePath();
@@ -35,6 +36,7 @@ namespace RestServerB.Controllers
             }
             if (false == ConnectionsManager.IsExist(uuid))
             {
+                Console.WriteLine("User not logged in");
                 response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_LOGGED_IN);
                 return Ok(JsonUtils.toJsonStr(response));
             }
@@ -44,6 +46,7 @@ namespace RestServerB.Controllers
                 String path = persistance.SaveInDirectory();
                 if (true == StringUtils.IsNullOrEmpty(path))
                 {
+                    Console.WriteLine($"File {fileName} filed to restored");
                     response.Add(CsConstatnts.error, ErrorsCode.TARGET_FILE_FAILED_TO_RESTORED);
                 } else
                 {
@@ -51,6 +54,7 @@ namespace RestServerB.Controllers
                 }
             } catch (Exception e)
             {
+                Console.WriteLine($"Error {e.Message} occurs in ImageLoadController");
                 int errorCode = int.Parse(e.Message);
                 response.Add(CsConstatnts.error, errorCode);
             }

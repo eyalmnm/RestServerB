@@ -17,6 +17,7 @@ namespace RestServerB.Controllers
         // POST: api/FindFile
         public IHttpActionResult Post(FindFilesData value)
         {
+            Console.WriteLine("FindFileController");
             String uuid = "";
 
             IEnumerable<string> headerValues;
@@ -29,6 +30,7 @@ namespace RestServerB.Controllers
 
             if (false == ConnectionsManager.IsExist(uuid))
             {
+                Console.WriteLine("user not logged in");
                 Dictionary<String, object> response = new Dictionary<String, object>();
                 response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_LOGGED_IN);
                 return Ok(JsonUtils.toJsonStr(response));
@@ -40,11 +42,12 @@ namespace RestServerB.Controllers
             List<Dictionary<String, object>> dataList = findFilesPersistance.FindFile(fileNumber);
             if (null == dataList)
             {
+                Console.WriteLine($"file {fileNumber} not found");
                 Dictionary<String, object> response = new Dictionary<String, object>();
                 response.Add(CsConstatnts.error, ErrorsCode.FILE_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             }
-
+            Console.WriteLine($"File {fileNumber} found");
             return Ok(JsonUtils.toJsonStr(dataList));
         }
     }

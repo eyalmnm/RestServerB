@@ -26,6 +26,7 @@ namespace RestServerB.Controllers
 
         public IHttpActionResult Post(LoginData value)
         {
+            Console.WriteLine("LoginController");
             LoginPersistance loginPersistance = new LoginPersistance();
 
             String name = value.getName();
@@ -34,12 +35,14 @@ namespace RestServerB.Controllers
 
             if ((null == uuid) || (0 == uuid.Length))
             {
+                Console.WriteLine($"user {name} not found");
                 Dictionary<String, object> response = new Dictionary<String, object>();
                 response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             }
             else
             {
+                Console.WriteLine($"user {name} logged in successfully");
                 Dictionary<String, object> response = new Dictionary<String, object>();
                 response.Add(CsConstatnts.userName, name);
                 response.Add(CsConstatnts.uuid, uuid);

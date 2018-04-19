@@ -17,6 +17,8 @@ namespace RestServerB.Controllers
         // POST: api/GetFiles
         public IHttpActionResult Post(GetFiles value)
         {
+            Console.WriteLine("GetFilesController");
+
             Dictionary<String, object> response = new Dictionary<String, object>();
 
             String directory = value.getDirectory();
@@ -34,6 +36,7 @@ namespace RestServerB.Controllers
             }
             if (false == ConnectionsManager.IsExist(uuid))
             {
+                Console.WriteLine("user not logged in");
                 response.Add(CsConstatnts.error, ErrorsCode.USER_NOT_LOGGED_IN);
                 return Ok(JsonUtils.toJsonStr(response));
             }
@@ -41,6 +44,7 @@ namespace RestServerB.Controllers
             String[] filesList = persistance.getFileList();
             if (null == filesList)
             {
+                Console.WriteLine($"Directory {directory} not found");
                 response.Add(CsConstatnts.error, ErrorsCode.TARGET_DIRCTORY_NOT_FOUND);
                 return Ok(JsonUtils.toJsonStr(response));
             } else
