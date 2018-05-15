@@ -38,8 +38,15 @@ namespace RestServerB.Controllers
             FindFilesPersistance findFilesPersistance = new FindFilesPersistance();
 
             String fileNumber = value.getFileNumber();
-            Console.WriteLine($"Sercing for file: {fileNumber}");
-            List<Dictionary<String, object>> dataList = findFilesPersistance.FindFile(fileNumber);
+            long creationDate = value.getCreationDate();
+            String insuredName = value.getInsuredName();
+            String customer = value.getCustomer();
+            String employee = value.getEmployee();
+            String suitNumber = value.getSuitNumber();
+            String fileStatus = value.getFileStatus();
+            Console.WriteLine($"Sercing for file: {fileNumber} {creationDate} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
+            List<Dictionary<String, object>> dataList = findFilesPersistance.FindFile(fileNumber, creationDate, 
+                insuredName, customer, employee, suitNumber, fileStatus);
             if (null == dataList)
             {
                 Console.WriteLine($"file {fileNumber} not found");

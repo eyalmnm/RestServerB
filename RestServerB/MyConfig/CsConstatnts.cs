@@ -21,6 +21,12 @@ namespace RestServerB.MyConfig
 
         public const String findFile = "api/FindFile";
         public const String fileNumber = "fileNumber";
+        public const String creationDate = "creationDate";
+        public const String insuredName = "insuredName";
+        public const String customer = "customer";
+        public const String employee = "employee";
+        public const String suitNumber = "suitNumber";
+        public const String fileStatus = "fileStatus";
 
         public const String uploadImage = "api/ImageUpload";
         public const String filePath = "filePath";
