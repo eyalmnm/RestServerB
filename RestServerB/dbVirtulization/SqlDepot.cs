@@ -13,6 +13,23 @@ namespace RestServerB.dbVirtulization
             return "SELECT * FROM EmployeeList WHERE CodeName=@CodeName AND Password=@Password And Active=TRUE";
         }
 
+        public static String FindRecordQuery()
+        {
+            return "SELECT Files.FileNumber, InsuredList.Name, Customers.Name, EmployeeList.Name, Files.SuitNumber, FileStatus.Name, Files.CreationDate "+
+            "FROM((((Files LEFT JOIN FileCustomerLink ON Files.FilesId = FileCustomerLink.FileId) "+
+            "LEFT JOIN Customers ON FileCustomerLink.CustomerId = Customers.CustomersId) "+
+            "LEFT JOIN InsuredList ON Files.InsuredId = InsuredList.InsuredListId) "+
+            "LEFT JOIN EmployeeList ON Files.MainApprasierId = EmployeeList.EmployeeListId) "+
+            "LEFT JOIN FileStatus ON Files.FileStatus = FileStatus.FileStatusId "+
+            "WHERE(Files.FileNumber = @FileNumber OR @FileNumber IS NULL) "+
+            "AND(InsuredList.Name = @InsuredName OR @InsuredName IS NULL) "+
+            "AND(Customers.Name = @CustomerName OR @CustomerName IS NULL) "+
+            "AND(EmployeeList.Name = @EmpName OR @EmpName IS NULL) "+
+            "AND(Files.SuitNumber = @SuitNumber OR @SuitNumber IS NULL) "+
+            "AND(FileStatus.Name = @FileStatusName OR @FileStatusName IS NULL) "+
+            "AND((Files.CreationDate >= @CreationDateFrom OR @CreationDateFrom IS NULL) AND(Files.CreationDate <= @CreationDateTo OR @CreationDateTo IS NULL))";
+        }
+
         public static String FindRecordByCreationDate()
         {
             return "SELECT Files.FileNumber, InsuredList.Name, Customers.Name, EmployeeList.Name, Files.SuitNumber, FileStatus.Name, Files.CreationDate " +

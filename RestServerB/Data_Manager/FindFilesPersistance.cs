@@ -24,24 +24,31 @@ namespace RestServerB.Data_Manager
             Initializer();
 
             // Init with defualt command
-            String sqlCommand = SqlDepot.FindRecordByFileId();
-            if (false == StringUtils.IsNullOrEmpty(fileNumber)) sqlCommand = SqlDepot.FindRecordByFileId();
-            else if (false == StringUtils.IsNullOrEmpty(insuredName)) sqlCommand = SqlDepot.FindRecordByInsuredName();
-            else if (false == StringUtils.IsNullOrEmpty(customer)) sqlCommand = SqlDepot.FindRecordByCustomerName();
-            else if (false == StringUtils.IsNullOrEmpty(employee)) sqlCommand = SqlDepot.FindRecordByEmployeeName();
-            else if (false == StringUtils.IsNullOrEmpty(suitNumber)) sqlCommand = SqlDepot.FindRecordBySuitNumber();
-            else if (false == (creationDate <= 0)) sqlCommand = SqlDepot.FindRecordByCreationDate();
+            String sqlCommand = SqlDepot.FindRecordQuery();
+            //if (false == StringUtils.IsNullOrEmpty(fileNumber)) sqlCommand = SqlDepot.FindRecordByFileId();
+            //else if (false == StringUtils.IsNullOrEmpty(insuredName)) sqlCommand = SqlDepot.FindRecordByInsuredName();
+            //else if (false == StringUtils.IsNullOrEmpty(customer)) sqlCommand = SqlDepot.FindRecordByCustomerName();
+            //else if (false == StringUtils.IsNullOrEmpty(employee)) sqlCommand = SqlDepot.FindRecordByEmployeeName();
+            //else if (false == StringUtils.IsNullOrEmpty(suitNumber)) sqlCommand = SqlDepot.FindRecordBySuitNumber();
+            //else if (false == (creationDate <= 0)) sqlCommand = SqlDepot.FindRecordByCreationDate();
 
                 using (CommandVirtualization command = new CommandVirtualization(sqlCommand))
             {
                 // Use default command
-                if (false == StringUtils.IsNullOrEmpty(fileNumber)) command.Parameters.Add("FileNumber", fileNumber, null);
-                else if (false == StringUtils.IsNullOrEmpty(insuredName)) command.Parameters.Add("Insured", insuredName, null);
-                else if (false == StringUtils.IsNullOrEmpty(customer)) command.Parameters.Add("Customer", customer, null);
-                else if (false == StringUtils.IsNullOrEmpty(employee)) command.Parameters.Add("Employee", employee, null);
-                else if (false == StringUtils.IsNullOrEmpty(suitNumber)) command.Parameters.Add("SuitNumber", suitNumber, null);
-                else if (false == (creationDate <= 0)) command.Parameters.Add("CreationDate", new DateTime(creationDate), null);
-
+                //if (false == StringUtils.IsNullOrEmpty(fileNumber)) command.Parameters.Add("FileNumber", fileNumber, null);
+                //else if (false == StringUtils.IsNullOrEmpty(insuredName)) command.Parameters.Add("Insured", insuredName, null);
+                //else if (false == StringUtils.IsNullOrEmpty(customer)) command.Parameters.Add("Customer", customer, null);
+                //else if (false == StringUtils.IsNullOrEmpty(employee)) command.Parameters.Add("Employee", employee, null);
+                //else if (false == StringUtils.IsNullOrEmpty(suitNumber)) command.Parameters.Add("SuitNumber", suitNumber, null);
+                //else if (false == (creationDate <= 0)) command.Parameters.Add("CreationDate", new DateTime(creationDate), null);
+                command.Parameters.Add("FileNumber ", fileNumber, "String");
+                command.Parameters.Add("InsuredName", insuredName, "String");
+                command.Parameters.Add("CustomerName", customer, "String");
+                command.Parameters.Add("EmpName", employee, "String");
+                command.Parameters.Add("SuitNumber ", suitNumber, "String");
+                command.Parameters.Add("FileStatusName", fileStatus, "String");
+                command.Parameters.Add("CreationDateFrom ", creationDate, "PureDateTime");
+                //command.Parameters.Add("CreationDateTo ", creationDateTo, "PureDateTime");
                 try
                 {
                     dBVirtualizationOleDB.Execute(command, tempTblName);
