@@ -326,6 +326,7 @@
     <Compile Include="dbVirtulization\DBVirtualizationOleDB.cs" />
     <Compile Include="dbVirtulization\KeyValuePair.cs" />
     <Compile Include="dbVirtulization\SqlDepot.cs" />
+    <Compile Include="Models\CreateFile.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Files.cs" />
     <Compile Include="Models\FindFilesData.cs" />

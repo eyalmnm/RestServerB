@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using RestServerB.Utils;
 
 namespace RestServerB.Models
 {
@@ -15,17 +16,17 @@ namespace RestServerB.Models
         private String SuitNumber { get; set; }
         private String FileStatus { get; set; }
 
-        public FindFilesData(String fileNumber, long creationDate, String insuredName, String customer, 
+        public FindFilesData(String fileNumber, String creationDate, String insuredName, String customer, 
             String employee, String suitNumber, String fileStatus)
         {
             Console.WriteLine($"Searching: {fileNumber} {creationDate} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
-            this.FileNumber = fileNumber;
-            this.CreationDate = creationDate;
-            this.InsuredName = insuredName;
-            this.Customer = customer;
-            this.Employee = employee;
-            this.SuitNumber = suitNumber;
-            this.FileStatus = fileStatus;
+            this.FileNumber = StringUtils.IsNullOrEmpty(fileNumber) ? null : fileNumber;
+            this.CreationDate = long.Parse(creationDate);
+            this.InsuredName = StringUtils.IsNullOrEmpty(insuredName) ? null : insuredName;
+            this.Customer = StringUtils.IsNullOrEmpty(customer) ? null : customer;
+            this.Employee = StringUtils.IsNullOrEmpty(employee) ? null : employee;
+            this.SuitNumber = StringUtils.IsNullOrEmpty(suitNumber) ? null : suitNumber;
+            this.FileStatus = StringUtils.IsNullOrEmpty(fileStatus) ? null : fileStatus;
         }
 
         public String getFileNumber()
