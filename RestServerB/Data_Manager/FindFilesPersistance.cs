@@ -53,24 +53,16 @@ namespace RestServerB.Data_Manager
                     }
                     List<Dictionary<String, object>> resultsList = new List<Dictionary<String, object>>();
                     for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        retFileNumber = dt.Rows[0]["FileNumber"].ToString();
-                        if ((null != retFileNumber) && (0 < retFileNumber.Trim().Length))
-                        {
-                            Dictionary<String, object> rowValues = new Dictionary<String, object>();
-                            if (DBNull.Value != dt.Rows[0]["FileNumber"]) rowValues.Add("FileNumber", dt.Rows[0]["FileNumber"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["InsuredList.Name"]) rowValues.Add("InsuredList.Name", dt.Rows[0]["InsuredList.Name"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["Customers.Name"]) rowValues.Add("Customers.Name", dt.Rows[0]["Customers.Name"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["EmployeeList.Name"]) rowValues.Add("EmployeeList.Name", dt.Rows[0]["EmployeeList.Name"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["SuitNumber"]) rowValues.Add("SuitNumber", dt.Rows[0]["SuitNumber"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["FileStatus.Name"]) rowValues.Add("FileStatus.Name", dt.Rows[0]["FileStatus.Name"].ToString());
-                            if (DBNull.Value != dt.Rows[0]["CreationDate"]) rowValues.Add("CreationDate", dt.Rows[0]["CreationDate"].ToString());  // DBNull.Value
-                            resultsList.Add(rowValues);
-                        }
-                        else
-                        {
-                            continue;
-                        }
+                    {                      
+                        Dictionary<String, object> rowValues = new Dictionary<String, object>();
+                        if (DBNull.Value != dt.Rows[i]["FileNumber"]) rowValues.Add("FileNumber", dt.Rows[i]["FileNumber"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["InsuredList.Name"]) rowValues.Add("InsuredList.Name", dt.Rows[i]["InsuredList.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["Customers.Name"]) rowValues.Add("Customers.Name", dt.Rows[i]["Customers.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["EmployeeList.Name"]) rowValues.Add("EmployeeList.Name", dt.Rows[i]["EmployeeList.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["SuitNumber"]) rowValues.Add("SuitNumber", dt.Rows[i]["SuitNumber"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["FileStatus.Name"]) rowValues.Add("FileStatus.Name", dt.Rows[i]["FileStatus.Name"].ToString());
+                        if (DBNull.Value != dt.Rows[i]["CreationDate"]) rowValues.Add("CreationDate", dt.Rows[i]["CreationDate"].ToString());  // DBNull.Value
+                        resultsList.Add(rowValues);               
                     }
                     return resultsList;
                 }
