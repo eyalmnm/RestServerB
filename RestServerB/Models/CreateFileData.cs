@@ -1,27 +1,27 @@
-﻿using System;
+﻿using RestServerB.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using RestServerB.Utils;
 
 namespace RestServerB.Models
 {
-    public class FindFilesData
+    public class CreateFileData
     {
         private String FileNumber { get; set; }
-        private String CreationDate { get; set; }
+        private long CreationDate { get; set; }
         private String InsuredName { get; set; }
         private String Customer { get; set; }
         private String Employee { get; set; }
         private String SuitNumber { get; set; }
         private String FileStatus { get; set; }
 
-        public FindFilesData(String fileNumber, String creationDate, String insuredName, String customer, 
+        public CreateFileData(String fileNumber, String creationDate, String insuredName, String customer,
             String employee, String suitNumber, String fileStatus)
         {
-            Console.WriteLine($"Searching: {fileNumber} {creationDate} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
+            Console.WriteLine($"Adding: {fileNumber} {creationDate} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
             this.FileNumber = StringUtils.IsNullOrEmpty(fileNumber) ? null : fileNumber;
-            this.CreationDate = StringUtils.IsNullOrEmpty(creationDate) ? null : creationDate;
+            this.CreationDate = long.Parse(creationDate);
             this.InsuredName = StringUtils.IsNullOrEmpty(insuredName) ? null : insuredName;
             this.Customer = StringUtils.IsNullOrEmpty(customer) ? null : customer;
             this.Employee = StringUtils.IsNullOrEmpty(employee) ? null : employee;
@@ -34,7 +34,7 @@ namespace RestServerB.Models
             return this.FileNumber;
         }
 
-        public String getCreationDate()
+        public long getCreationDate()
         {
             return this.CreationDate;
         }

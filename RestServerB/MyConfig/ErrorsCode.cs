@@ -13,6 +13,7 @@ namespace RestServerB.MyConfig
 
         // File 1100 - 1199
         public const int FILE_NOT_FOUND = 1100;
+        public const int FILE_CREATION_FAILED = 1101;
 
         // Image Storage 1200 - 1299
         public const int TARGET_DIRCTORY_NOT_FOUND = 1200;

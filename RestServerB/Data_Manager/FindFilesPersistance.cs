@@ -3,6 +3,9 @@ using RestServerB.dbVirtulization;
 using System.Collections.Generic;
 using System.Data;
 using RestServerB.Utils;
+
+// Ref: https://stackoverflow.com/questions/221732/datetime-null-value
+
 namespace RestServerB.Data_Manager
 {
     public class FindFilesPersistance
@@ -15,22 +18,26 @@ namespace RestServerB.Data_Manager
         private DBVirtualizationOleDB dBVirtualizationOleDB;
         private String tempTblName = "Records";
 
-        public List<Dictionary<String, object>> FindFile(String fileNumber, long creationDate, String insuredName, String customer,
+        public List<Dictionary<String, object>> FindFile(String fileNumber, String creationDate, String insuredName, String customer,
             String employee, String suitNumber, String fileStatus)
         {
             DataTable dt;
-            String retFileNumber;
 
             Initializer();
 
             // Init with defualt command
             String sqlCommand = SqlDepot.FindRecordQuery();
-                using (CommandVirtualization command = new CommandVirtualization(sqlCommand))
+            using (CommandVirtualization command = new CommandVirtualization(sqlCommand))
             {
                 // Create DateTime for creationDate
-                TimeSpan time = TimeSpan.FromMilliseconds(creationDate);
-                DateTime startdate = new DateTime(1970, 1, 1) + time;
-                DateTime now = DateTime.Now;
+                Nullable<DateTime> startdate = null;
+                Nullable<DateTime> now = null;
+                if (false == StringUtils.IsNullOrEmpty(creationDate)) {
+                    long creationDateL = long.Parse(creationDate);
+                    TimeSpan time = TimeSpan.FromMilliseconds(creationDateL);
+                    startdate = new DateTime(1970, 1, 1) + time;
+                    now = DateTime.Now;              
+                }                
 
                 // Use default command
                 command.Parameters.Add("FileNumber ", fileNumber, "String");
@@ -39,8 +46,19 @@ namespace RestServerB.Data_Manager
                 command.Parameters.Add("EmpName", employee, "String");
                 command.Parameters.Add("SuitNumber ", suitNumber, "String");
                 command.Parameters.Add("FileStatusName", fileStatus, "String");
-                command.Parameters.Add("CreationDateFrom ", startdate, "PureDateTime");
-                command.Parameters.Add("CreationDateTo ", now, "PureDateTime");
+                if (true == startdate.HasValue)
+                {
+                    command.Parameters.Add("CreationDateFrom ", startdate.Value, "PureDateTime");
+                } else
+                {
+                    command.Parameters.Add("CreationDateFrom ", null, "PureDateTime");
+                }
+                if (true == now.HasValue) {
+                    command.Parameters.Add("CreationDateTo ", now.Value, "PureDateTime");
+                } else
+                {
+                    command.Parameters.Add("CreationDateTo ", null, "PureDateTime");
+                }
                 try
                 {
                     dBVirtualizationOleDB.Execute(command, tempTblName);

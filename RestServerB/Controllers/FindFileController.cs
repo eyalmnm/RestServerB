@@ -36,7 +36,7 @@ namespace RestServerB.Controllers
             FindFilesPersistance findFilesPersistance = new FindFilesPersistance();
 
             String fileNumber = value.getFileNumber();
-            long creationDate = value.getCreationDate();
+            String creationDate = value.getCreationDate();
             String insuredName = value.getInsuredName();
             String customer = value.getCustomer();
             String employee = value.getEmployee();

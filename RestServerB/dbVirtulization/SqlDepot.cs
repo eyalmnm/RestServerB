@@ -84,9 +84,10 @@ namespace RestServerB.dbVirtulization
                 "WHERE Files.FileNumber = @FileNumber";
         }
 
-        public static void SaveRecord(List<KeyValuePair<string, string>> recData)
+        public static String SaveRecord()
         {
             // TODO
+            return null;
         }
 
         public virtual string getNextRecordId()
