@@ -21,7 +21,8 @@ namespace RestServerB.MyConfig
 
         public const String findFile = "api/FindFile";
         public const String fileNumber = "fileNumber";
-        public const String creationDate = "creationDate";
+        public const String creationDateStart = "creationDateStart";
+        public const String creationDateEnd = "creationDateEnd";
         public const String insuredName = "insuredName";
         public const String customer = "customer";
         public const String employee = "employee";

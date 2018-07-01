@@ -18,7 +18,7 @@ namespace RestServerB.Data_Manager
         private DBVirtualizationOleDB dBVirtualizationOleDB;
         private String tempTblName = "Records";
 
-        public List<Dictionary<String, object>> FindFile(String fileNumber, String creationDate, String insuredName, String customer,
+        public List<Dictionary<String, object>> FindFile(String fileNumber, String creationDateFrom, String creationDateTo, String insuredName, String customer,
             String employee, String suitNumber, String fileStatus)
         {
             DataTable dt;
@@ -31,13 +31,25 @@ namespace RestServerB.Data_Manager
             {
                 // Create DateTime for creationDate
                 Nullable<DateTime> startdate = null;
-                Nullable<DateTime> now = null;
-                if (false == StringUtils.IsNullOrEmpty(creationDate)) {
-                    long creationDateL = long.Parse(creationDate);
+                Nullable<DateTime> endDate = null;
+                if (false == StringUtils.IsNullOrEmpty(creationDateFrom)) {
+                    long creationDateL = long.Parse(creationDateFrom);
                     TimeSpan time = TimeSpan.FromMilliseconds(creationDateL);
                     startdate = new DateTime(1970, 1, 1) + time;
-                    now = DateTime.Now;              
-                }                
+                }
+                if (false == StringUtils.IsNullOrEmpty(creationDateTo))
+                {
+                    long endDateL = long.Parse(creationDateTo);
+                    TimeSpan timeEnd = TimeSpan.FromMilliseconds(endDateL);
+                    endDate = new DateTime(1970, 1, 1) + timeEnd;
+                }
+                else
+                {
+                    if (false == StringUtils.IsNullOrEmpty(creationDateFrom))
+                    {
+                        endDate = DateTime.Now;
+                    }
+                }
 
                 // Use default command
                 command.Parameters.Add("FileNumber ", fileNumber, "String");
@@ -49,13 +61,15 @@ namespace RestServerB.Data_Manager
                 if (true == startdate.HasValue)
                 {
                     command.Parameters.Add("CreationDateFrom ", startdate.Value, "PureDateTime");
-                } else
+                }
+                else
                 {
                     command.Parameters.Add("CreationDateFrom ", null, "PureDateTime");
                 }
-                if (true == now.HasValue) {
-                    command.Parameters.Add("CreationDateTo ", now.Value, "PureDateTime");
-                } else
+                if (true == endDate.HasValue) {
+                    command.Parameters.Add("CreationDateTo ", endDate.Value, "PureDateTime");
+                }
+                else
                 {
                     command.Parameters.Add("CreationDateTo ", null, "PureDateTime");
                 }

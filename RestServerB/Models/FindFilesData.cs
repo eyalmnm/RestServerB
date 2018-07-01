@@ -9,19 +9,21 @@ namespace RestServerB.Models
     public class FindFilesData
     {
         private String FileNumber { get; set; }
-        private String CreationDate { get; set; }
+        private String CreationDateStart { get; set; }
+        private String CreationDateEnd { get; set; }
         private String InsuredName { get; set; }
         private String Customer { get; set; }
         private String Employee { get; set; }
         private String SuitNumber { get; set; }
         private String FileStatus { get; set; }
 
-        public FindFilesData(String fileNumber, String creationDate, String insuredName, String customer, 
+        public FindFilesData(String fileNumber, String creationDateStart, String creationDateEnd, String insuredName, String customer, 
             String employee, String suitNumber, String fileStatus)
         {
-            Console.WriteLine($"Searching: {fileNumber} {creationDate} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
+            Console.WriteLine($"Searching: {fileNumber} {creationDateStart} {creationDateEnd} {insuredName} {customer} {employee} {suitNumber} {fileStatus}");
             this.FileNumber = StringUtils.IsNullOrEmpty(fileNumber) ? null : fileNumber;
-            this.CreationDate = StringUtils.IsNullOrEmpty(creationDate) ? null : creationDate;
+            this.CreationDateStart = StringUtils.IsNullOrEmpty(creationDateStart) ? null : creationDateStart;
+            this.CreationDateEnd = StringUtils.IsNullOrEmpty(creationDateEnd) ? null : creationDateEnd;
             this.InsuredName = StringUtils.IsNullOrEmpty(insuredName) ? null : insuredName;
             this.Customer = StringUtils.IsNullOrEmpty(customer) ? null : customer;
             this.Employee = StringUtils.IsNullOrEmpty(employee) ? null : employee;
@@ -34,9 +36,14 @@ namespace RestServerB.Models
             return this.FileNumber;
         }
 
-        public String getCreationDate()
+        public String getCreationDateStart()
         {
-            return this.CreationDate;
+            return this.CreationDateStart;
+        }
+
+        public String getCreationDateEnd()
+        {
+            return this.CreationDateEnd;
         }
 
         public String getInsuredName()
